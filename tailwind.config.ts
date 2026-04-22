@@ -47,6 +47,14 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        highlight: {
+          DEFAULT: "hsl(var(--highlight))",
+          foreground: "hsl(var(--highlight-foreground))",
+        },
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -84,6 +92,17 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "pulse-accent": "pulse-accent 2s ease-out infinite",
+      },
+      boxShadow: {
+        brutal: "6px 6px 0 0 hsl(var(--foreground))",
+        "brutal-sm": "3px 3px 0 0 hsl(var(--foreground))",
+        "brutal-lg": "10px 10px 0 0 hsl(var(--foreground))",
+      },
+      fontFamily: {
+        display: ["Archivo Black", "sans-serif"],
+        sans: ["Space Grotesk", "sans-serif"],
+        mono: ["JetBrains Mono", "monospace"],
       },
     },
   },

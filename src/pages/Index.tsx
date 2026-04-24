@@ -15,7 +15,7 @@ const Index = () => {
   const [createOpen, setCreateOpen] = useState(false);
   const [selected, setSelected] = useState<Campaign | null>(null);
 
-  const notConfigured = CONTRACT_ADDRESS === "0x0000000000000000000000000000000000000000";
+  const notConfigured = CONTRACT_ADDRESS.startsWith("0x0000");
 
   async function onLaunchClick() {
     if (!account) {

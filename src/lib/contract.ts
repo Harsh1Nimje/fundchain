@@ -1,5 +1,5 @@
 // Paste the address you deployed via Remix on Sepolia here:
-export const CONTRACT_ADDRESS = "0xf0Efb1d311100Fe4AbCD42391845c92D511FC6cd";
+export const CONTRACT_ADDRESS = "0x7971388B38965514d1507f7faD819F3d9E75C913";
 
 export const SEPOLIA_CHAIN_ID = "0xaa36a7"; // 11155111
 

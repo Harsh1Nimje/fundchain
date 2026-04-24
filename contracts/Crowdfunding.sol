@@ -76,7 +76,6 @@ contract Crowdfunding {
     function withdraw(uint256 id) external {
         Campaign storage c = campaigns[id];
         require(msg.sender == c.creator, "Not creator");
-        require(block.timestamp >= c.deadline, "Not ended");
         require(c.raised >= c.goal, "Goal not reached");
         require(!c.withdrawn, "Already withdrawn");
 

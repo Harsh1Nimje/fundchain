@@ -25,7 +25,8 @@ export function CampaignCard({ campaign, onSelect }: Props) {
   const raised = Number(formatEther(campaign.raisedWei));
   const pct = Math.min(100, goal > 0 ? (raised / goal) * 100 : 0);
   const ended = Date.now() / 1000 >= campaign.deadline;
-  const success = ended && raised >= goal;
+  const success = campaign.raisedWei >= campaign.goalWei && goal > 0;
+  const showStatus = ended || success;
 
   return (
     <article className="brutal-card p-0 overflow-hidden flex flex-col">
@@ -46,7 +47,7 @@ export function CampaignCard({ campaign, onSelect }: Props) {
         <span className="absolute top-3 left-3 bg-foreground text-background px-2 py-1 font-mono text-xs">
           ID #{campaign.id}
         </span>
-        {ended && (
+        {showStatus && (
           <span
             className={`absolute top-3 right-3 px-2 py-1 font-mono text-xs border-2 border-foreground ${
               success ? "bg-success text-success-foreground" : "bg-destructive text-destructive-foreground"

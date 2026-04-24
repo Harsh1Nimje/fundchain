@@ -33,8 +33,9 @@ export function CampaignDetailDialog({ campaign, onOpenChange, onChanged }: Prop
   const raised = Number(formatEther(campaign.raisedWei));
   const pct = Math.min(100, goal > 0 ? (raised / goal) * 100 : 0);
   const ended = Date.now() / 1000 >= campaign.deadline;
-  const success = ended && raised >= goal;
-  const failed = ended && raised < goal;
+  const goalReached = campaign.raisedWei >= campaign.goalWei && goal > 0;
+  const success = goalReached;
+  const failed = ended && !goalReached;
   const isCreator = account?.toLowerCase() === campaign.creator.toLowerCase();
 
   async function run(label: string, fn: () => Promise<any>) {
@@ -84,8 +85,8 @@ export function CampaignDetailDialog({ campaign, onOpenChange, onChanged }: Prop
           </div>
           <div className="flex justify-between font-mono text-xs">
             <span className="font-bold">{raised.toFixed(4)} / {goal.toFixed(4)} ETH</span>
-            <span className={ended ? (success ? "text-success" : "text-destructive") : ""}>
-              {ended ? (success ? "GOAL REACHED" : "FAILED") : `${pct.toFixed(0)}%`}
+            <span className={success ? "text-success" : failed ? "text-destructive" : ""}>
+              {success ? "GOAL REACHED" : failed ? "FAILED" : `${pct.toFixed(0)}%`}
             </span>
           </div>
         </div>

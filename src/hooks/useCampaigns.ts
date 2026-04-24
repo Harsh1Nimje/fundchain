@@ -8,7 +8,7 @@ export function useCampaigns() {
   const [error, setError] = useState<string | null>(null);
 
   const load = useCallback(async () => {
-    if (CONTRACT_ADDRESS === "0x0000000000000000000000000000000000000000") {
+    if (CONTRACT_ADDRESS.startsWith("0x0000")) {
       setError("No contract address configured. Deploy via Remix and paste the address into src/lib/contract.ts");
       return;
     }
